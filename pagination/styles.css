@@ -1,0 +1,19 @@
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.pagination a {
+    color: black;
+    float: center;
+    padding: 8px 16px;
+    text-decoration: underline;
+    transition: background-color .3s;
+}
+.pagination a.active {
+    background-color: dodgerblue;
+    color: red;
+}
+    .pagination a:hover:not(.active) {background-color: #ddd;
+}
