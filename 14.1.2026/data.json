@@ -1,0 +1,5 @@
+[
+    { "jmeno": "Adam", "prijmeni": "Novak", "vek": 25 },
+    { "jmeno": "Eva", "prijmeni": "Svobodova", "vek": 30 },
+    { "jmeno": "Petr", "prijmeni": "Kral", "vek": 22 }
+]

@@ -1,0 +1,8 @@
+#tabulka {
+    border-collapse: collapse; width: auto;
+    border: 1px solid black;
+}
+
+#tabulka th, #tabulka td {
+    border: 1px solid black; padding: 8px; text-align: left;
+}
