@@ -1,5 +1,14 @@
-[
-    { "jmeno": "Adam", "prijmeni": "Novak", "vek": 25 },
-    { "jmeno": "Eva", "prijmeni": "Svobodova", "vek": 30 },
-    { "jmeno": "Petr", "prijmeni": "Kral", "vek": 22 }
-]
+{
+    "ucitele": [
+    { "jmeno": "Adam", "prijmeni": "Novak", "vek": 45 },
+    { "jmeno": "Eva", "prijmeni": "Svobodova", "vek": 90 },
+    { "jmeno": "Petr", "prijmeni": "Kral", "vek": 19 },
+    { "jmeno": "Vita", "prijmeni": "Malovsky", "vek": 39}
+    ],
+    "studenti": [
+    { "jmeno": "Jan", "prijmeni": "Cerny", "vek": 20 },
+    { "jmeno": "Anna", "prijmeni": "Bila", "vek": 21 },
+    { "jmeno": "Karel", "prijmeni": "Modry", "vek": 19 },
+    { "jmeno": "Lena", "prijmeni": "Zelena", "vek": 22}
+    ]
+}
