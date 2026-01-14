@@ -1,54 +1,38 @@
-// promenne
-const button = document.getElementById('MyButton'); // ziskame referenci na tlacitko
-const input = document.getElementById('MyInput');   // ziskame referenci na pole pro input/zadani textu
+// ===== VARIABLES =====
+const button = document.getElementById('MyButton'); // Get reference to the button element with id "MyButton"
+const input = document.getElementById('MyInput'); // Get reference to the input text field with id "MyInput"
 
-// udalosti
-button.addEventListener('click', function() { //priradime udalost click na tlacitko
-    alert(input.value); // pri kliknuti zobrazime alert s hodnotou z input pole
+// ===== EVENT LISTENERS =====
+button.addEventListener('click', function() { // Attach a click event listener to the button
+    alert(input.value); // When button is clicked, show an alert with the input field's text value
 });
 
-
-const tbody = document.querySelector("#tabulka tbody");
+// ===== TABLE SETUP =====
+const tbody = document.querySelector("#tabulka tbody"); // Get reference to the table body element where we'll add rows
 
 // ===== FETCH JSON DATA =====
-// Start fetching the data.json file from the server
-fetch("data.json")
-  // Convert the response to JSON format
-  .then(response => response.json())
-  // Once data is loaded, process it
-  .then(data => {
-    // Loop through each record (person) in the data array
-    data.forEach(zaznam => {
-      // Create a new table row for each person
-      const tr = document.createElement("tr");
+fetch("data.json") // Start fetching the data.json file from the server
+  .then(response => response.json()) // Convert the response to JSON format
+  .then(data => { // Once data is loaded, process it
+    data.ucitele.forEach(zaznam => { // Loop through each teacher in the data array
+      const tr = document.createElement("tr"); // Create a new table row for each teacher
 
       // ===== CREATE FIRST NAME CELL =====
-      // Create a new table cell for first name
-      const tdJmeno = document.createElement("td");
-      // Set the cell's text content to the person's first name
-      tdJmeno.textContent = zaznam.jmeno;
-      // Add the first name cell to the table row
-      tr.appendChild(tdJmeno);
+      const tdJmeno = document.createElement("td"); // Create a new table cell for first name
+      tdJmeno.textContent = zaznam.jmeno; // Set the cell's text content to the person's first name
+      tr.appendChild(tdJmeno); // Add the first name cell to the table row
 
       // ===== CREATE LAST NAME CELL =====
-      // Create a new table cell for last name
-      const tdPrijmeni = document.createElement("td");
-      // Set the cell's text content to the person's last name
-      tdPrijmeni.textContent = zaznam.prijmeni;
-      // Add the last name cell to the table row
-      tr.appendChild(tdPrijmeni);
+      const tdPrijmeni = document.createElement("td"); // Create a new table cell for last name
+      tdPrijmeni.textContent = zaznam.prijmeni; // Set the cell's text content to the person's last name
+      tr.appendChild(tdPrijmeni); // Add the last name cell to the table row
 
       // ===== CREATE AGE CELL =====
-      // Create a new table cell for age
-      const tdVek = document.createElement("td");
-      // Set the cell's text content to the person's age
-      tdVek.textContent = zaznam.vek;
-      // Add the age cell to the table row
-      tr.appendChild(tdVek);
+      const tdVek = document.createElement("td"); // Create a new table cell for age
+      tdVek.textContent = zaznam.vek; // Set the cell's text content to the person's age
+      tr.appendChild(tdVek); // Add the age cell to the table row
       
-      // Add the complete row (with all 3 cells) to the table body
-      tbody.appendChild(tr);
+      tbody.appendChild(tr); // Add the complete row (with all 3 cells) to the table body
     });
   })
-  // If there's an error loading the JSON file, catch it and log to console
-  .catch(err => console.error("Chyba při načítání JSON:", err));
+  .catch(err => console.error("Chyba při načítání JSON:", err)); // If there's an error loading the JSON file, catch it and log to console
