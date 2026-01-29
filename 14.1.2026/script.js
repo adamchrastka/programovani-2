@@ -14,7 +14,7 @@ const tbody = document.querySelector("#tabulka tbody"); // Get reference to the 
 fetch("data.json") // Start fetching the data.json file from the server
   .then(response => response.json()) // Convert the response to JSON format
   .then(data => { // Once data is loaded, process it
-    data.ucitele.forEach(zaznam => { // Loop through each teacher in the data array
+    data.studenti.forEach(zaznam => { // Loop through each teacher in the data array
       const tr = document.createElement("tr"); // Create a new table row for each teacher
 
       // ===== CREATE FIRST NAME CELL =====

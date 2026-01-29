@@ -4,3 +4,4 @@ button.addEventListener('click', function() {
     let delka = retezec.length;
     console.log(delka);
 });
+

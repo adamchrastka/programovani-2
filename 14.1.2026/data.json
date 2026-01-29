@@ -3,7 +3,8 @@
     { "jmeno": "Adam", "prijmeni": "Novak", "vek": 45 },
     { "jmeno": "Eva", "prijmeni": "Svobodova", "vek": 90 },
     { "jmeno": "Petr", "prijmeni": "Kral", "vek": 19 },
-    { "jmeno": "Vita", "prijmeni": "Malovsky", "vek": 39}
+    { "jmeno": "Vita", "prijmeni": "Malovsky", "vek": 39},
+    { "jmeno": "Jana", "prijmeni": "Horakova", "vek": 34}
     ],
     "studenti": [
     { "jmeno": "Jan", "prijmeni": "Cerny", "vek": 20 },
