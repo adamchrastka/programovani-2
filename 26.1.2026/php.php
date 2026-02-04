@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['fileToUpload'])) {
             $uploadOk = 0;
         }
 
-        // Check file size (500KB limit)
-        if ($uploadOk && $_FILES["fileToUpload"]["size"] > 500000) {
+        // Check file size (100MB limit)
+        if ($uploadOk && $_FILES["fileToUpload"]["size"] > 104857600) {
             $message = "Sorry, your file is too large.";
             $uploadOk = 0;
         }
