@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['fileToUpload'])) {
     $error_code = $_FILES["fileToUpload"]["error"];
     if ($error_code !== UPLOAD_ERR_OK) {
         $error_messages = [
-            1 => "Error: File is too large. Maximum size is 100MB.",
+            1 => "Error: File is too large. Maximum size is 200MB.",
             2 => "Error: File exceeds the HTML form limit.",
             3 => "Error: File was only partially uploaded.",
             4 => "Error: No file was selected.",
@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['fileToUpload'])) {
             $uploadOk = 0;
         }
 
-        // Check file size (100MB limit)
-        if ($uploadOk && $_FILES["fileToUpload"]["size"] > 104857600) {
+        // Check file size (200MB limit)
+        if ($uploadOk && $_FILES["fileToUpload"]["size"] > 209715200) {
             $message = "Sorry, your file is too large.";
             $uploadOk = 0;
         }
