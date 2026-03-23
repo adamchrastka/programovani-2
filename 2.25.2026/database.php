@@ -35,7 +35,7 @@ try{
 
 
 catch (PDOException $e){
-    echo"nelze se pripojit k db:".$e->getmessage();
+    echo"nelze se pripojit k db:".$e->getMessage();
     
 }
 function DELETEALL($table) {
@@ -47,6 +47,7 @@ function DELETEALL($table) {
 }
 
 function GET ($table,$id){
+    global $db;
     $sql="SELECT * FROM $table where id= :id";
     $stmt = $db->prepare($sql); //ochrana pro sql injection
     $stmt->execute(['id' => $id]); //provedeni přikazu
@@ -61,7 +62,22 @@ function GETALL($table){
     return $stmt->fetchALL(PDO::FETCH_ASSOC);
 }
 
+function CREATE_TABLE_IF_NOT_EXISTS($table) {
+    global $db;
+    if ($table === "users") {
+        $sql = "CREATE TABLE IF NOT EXISTS users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(100) NOT NULL,
+            email VARCHAR(100) NOT NULL,
+            name VARCHAR(100) NOT NULL
+        )";
+        $db->exec($sql);
+        echo "Table 'users' checked/created successfully.<br>";
+    }
+}
+
 $tableName = "users";
+CREATE_TABLE_IF_NOT_EXISTS($tableName);
 $data = GETALL($tableName);
 function INSERT($table, $data) {
     global $db;

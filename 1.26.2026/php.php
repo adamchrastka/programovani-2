@@ -28,13 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['fileToUpload'])) {
     $error_code = $_FILES["fileToUpload"]["error"];
     if ($error_code !== UPLOAD_ERR_OK) {
         $error_messages = [
-            UPLOAD_ERR_INI_SIZE   => "Error: File is too large (exceeds server limit).",
-            UPLOAD_ERR_FORM_SIZE  => "Error: File exceeds form limit (MAX_FILE_SIZE).",
-            UPLOAD_ERR_PARTIAL    => "Error: File was only partially uploaded.",
-            UPLOAD_ERR_NO_FILE    => "Error: No file was selected.",
-            UPLOAD_ERR_NO_TMP_DIR => "Error: Missing temporary folder.",
-            UPLOAD_ERR_CANT_WRITE => "Error: Failed to write file to disk.",
-            UPLOAD_ERR_EXTENSION  => "Error: File upload blocked by extension."
+            1 => "Error: File is too large. Maximum size is 100MB.",
+            2 => "Error: File exceeds the HTML form limit.",
+            3 => "Error: File was only partially uploaded.",
+            4 => "Error: No file was selected.",
+            6 => "Error: Missing temporary folder.",
+            7 => "Error: Failed to write file to disk.",
+            8 => "Error: File upload blocked by extension."
         ];
         $message = $error_messages[$error_code] ?? "Error: Unknown upload error.";
         if ($error_code === UPLOAD_ERR_INI_SIZE || $error_code === UPLOAD_ERR_FORM_SIZE) {
@@ -67,9 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['fileToUpload'])) {
             $uploadOk = 0;
         }
 
-        // Check file size against server limit
-        if ($uploadOk && $_FILES["fileToUpload"]["size"] > $maxBytes) {
-            $message = "Sorry, your file is too large; server allows up to {$maxDisplay}.";
+        // Check file size (100MB limit)
+        if ($uploadOk && $_FILES["fileToUpload"]["size"] > 104857600) {
+            $message = "Sorry, your file is too large.";
             $uploadOk = 0;
         }
 
