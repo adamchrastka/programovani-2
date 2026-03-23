@@ -111,6 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['fileToUpload'])) {
     <?php endif; ?>
     
     <br>
-    <a href="index.html">Upload another image</a>
+    <a href="private.html">Upload another image</a>
+    <a href="login.php">Odhlasit</a>
 </body>
 </html>
