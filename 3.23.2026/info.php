@@ -6,8 +6,9 @@
 </head>
 <body>
     <h1>Informacni Stranka</h1>
-    <p>Toto je informacni stranka pro hosti.</p>
+    <p>Toto je informacni stranka pro hosty.</p>
     <p>Tady najdete uzitecne informace o nasich sluzbach.</p>
+    <p>Toto delal adamek chrastkay</p>
     <a href="login.php">Odhlasit</a>
 </body>
 </html>

@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Panel</title>
+    <meta http-equiv="refresh" content="0;url=seznam.php">
 </head>
 <body>
-    <h1>Vitajte v Admin Panelu</h1>
-    <p>Toto je zabezpecena stranka pro administratory.</p>
-    <p>Zde muzete spravovat obsah a uzivatele.</p>
-    <a href="seznam.php">Seznam souboru</a>
-    <br><br>
-    <a href="login.php">Odhlasit</a>
+    <p>Přesměrování na seznam souborů...</p>
 </body>
 </html>

@@ -2,6 +2,12 @@
 $uploadedImage = '';
 $message = '';
 
+// DEBUG: Show current PHP limits
+$message .= "DEBUG - upload_max_filesize: " . ini_get('upload_max_filesize') . "<br>";
+$message .= "DEBUG - post_max_size: " . ini_get('post_max_size') . "<br>";
+$message .= "DEBUG - max_file_uploads: " . ini_get('max_file_uploads') . "<br>";
+$message .= "DEBUG - file_uploads: " . (ini_get('file_uploads') ? 'enabled' : 'disabled') . "<br><br>";
+
 // helper to convert php.ini size string (e.g. "2M") to bytes
 function toBytes($val) {
     $val = trim($val);
@@ -23,6 +29,10 @@ $maxBytes   = min(
 $maxDisplay = ini_get('upload_max_filesize');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['fileToUpload'])) {
+
+    // DEBUG: Show file upload info
+    $message .= "DEBUG - FILES array: " . print_r($_FILES, true) . "<br>";
+    $message .= "DEBUG - POST array: " . print_r($_POST, true) . "<br><br>";
 
     // Check if file was actually uploaded
     $error_code = $_FILES["fileToUpload"]["error"];
