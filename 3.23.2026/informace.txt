@@ -1,0 +1,13 @@
+prihlasovaci udaje
+
+admin stranka (admin.php + seznam.php)
+username = admin
+password = admin
+
+user stranka (private.html)
+username = user
+password = user
+
+guest stranka (info.php)
+username = guest
+password = guest
