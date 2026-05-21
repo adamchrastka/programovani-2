@@ -1,3 +1,9 @@
+Projekt mám celou dobu uložený na svém notebooku, tedy lokálně. V několika hodinách to mohl i vyučující,
+i ostatní žáci postřehnout. Github jsem používal pouze ze začátku, během doby kdy jsem neměl notebook a 
+pracoval částečně ve škole přes Horizon a částečně na mém dočasném notebooku. 
+
+
+
 Dokumentace projektu - Autoskola system
 Autor: Adam Chrastka
 
