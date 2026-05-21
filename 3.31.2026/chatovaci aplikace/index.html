@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatovací Aplikace</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- LEFT SIDE: CHAT LIST -->
+        <div class="chat-sidebar">
+            <div class="sidebar-header">
+                <h2>Konverzace</h2>
+                <button id="newChatBtn" class="btn-new-chat" title="Nová konverzace">+</button>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="searchChats" placeholder="Hledat konverzaci...">
+            </div>
+            
+            <div class="chat-list" id="chatList">
+                <!-- Chat items will be loaded here via AJAX -->
+            </div>
+        </div>
+        
+        <!-- RIGHT SIDE: CHAT WINDOW -->
+        <div class="chat-main">
+            <div class="chat-header" id="chatHeader">
+                <div class="header-info">
+                    <h3 id="chatHeaderName">Vyberte konverzaci</h3>
+                    <span id="chatHeaderStatus" class="status-indicator">Není vybrána</span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" title="Informace">ℹ️</button>
+                    <button class="btn-icon" title="Volat">📞</button>
+                    <button class="btn-icon" title="Více">⋮</button>
+                </div>
+            </div>
+            
+            <div class="messages-container" id="messagesContainer">
+                <!-- Messages will be loaded here via AJAX -->
+            </div>
+            
+            <div class="chat-input-area">
+                <div class="input-actions">
+                    <button class="btn-icon" id="attachBtn" title="Přidat přílohu">📎</button>
+                    <button class="btn-icon" id="emojiBtn" title="Emoji">😊</button>
+                </div>
+                
+                <textarea id="messageInput" class="message-input" placeholder="Napište zprávu..." rows="1"></textarea>
+                
+                <button id="sendBtn" class="btn-send" title="Odeslat zprávu">Odeslat</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hidden input for file upload -->
+    <input type="file" id="fileInput" style="display:none;" multiple>
+    
+    <script src="js.js"></script>
+</body>
+</html>

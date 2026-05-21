@@ -1,10 +1,10 @@
 <?php
+
 $uploadDir = 'uploads/';
 $images = [];
 
 /* DELETE FILE */
 if (isset($_GET['delete'])) {
-
     $file = basename($_GET['delete']);
     $filePath = $uploadDir . $file;
 
@@ -12,33 +12,33 @@ if (isset($_GET['delete'])) {
         unlink($filePath);
     }
 
-    header("Location: ".$_SERVER['PHP_SELF']);
+    header("Location: " . $_SERVER['PHP_SELF']);
     exit;
 }
 
 /* LOAD IMAGES */
 if (is_dir($uploadDir)) {
-
     $files = scandir($uploadDir);
 
     foreach ($files as $file) {
-
         if ($file === '.' || $file === '..') {
             continue;
         }
 
         $filePath = $uploadDir . $file;
 
-        if (is_file($filePath)) {
+        if (!is_file($filePath)) {
+            continue;
+        }
 
-            $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+        $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
 
-            if (in_array($ext,['jpg','jpeg','png','gif'])) {
-                $images[] = $file;
-            }
+        if (in_array($ext, ['jpg','jpeg','png','gif'])) {
+            $images[] = $file;
         }
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -52,58 +52,40 @@ if (is_dir($uploadDir)) {
 
 <style>
 
-body{
-font-family: Arial;
-}
+body{font-family:Arial}
 
 .image-container{
-
 display:inline-block;
-
 margin:10px;
-
 text-align:center;
-
 padding:10px;
-
 border:1px solid #ddd;
-
 border-radius:6px;
-
 background:#f9f9f9;
-
 }
+
 .image-container img{
-    max-width:200px;
-    max-height:200px;
-    border:1px solid #ccc;
-    border-radius:4px;
+max-width:200px;
+max-height:200px;
+border:1px solid #ccc;
+border-radius:4px;
 }
 
 .btn{
-    display:inline-block;
-    margin-top:5px;
-    padding:5px 10px;
-    color:white;
-    text-decoration:none;
-    border-radius:4px;
-    font-size:13px;
-
+display:inline-block;
+margin-top:5px;
+padding:5px 10px;
+color:white;
+text-decoration:none;
+border-radius:4px;
+font-size:13px;
+border:none;
+cursor:pointer;
 }
 
-.download{
-    background:#007bff;
-}
-
-.link{
-    background:#28a745;
-    border:none;
-    cursor:pointer;
-}
-
-.delete{
-    background:#dc3545;
-}
+.download{background:#007bff;}
+.link{background:#28a745;}
+.delete{background:#dc3545;}
 
 </style>
 
@@ -111,32 +93,28 @@ background:#f9f9f9;
 
 function generateLink(imageName){
 
-const downloadUrl =
+const url =
 window.location.origin +
 '/download.php?file=' +
 encodeURIComponent(imageName);
-navigator.clipboard.writeText(downloadUrl)
-.then(()=>{
-alert('Odkaz zkopírován:\\n'+downloadUrl);
 
-})
-
+navigator.clipboard.writeText(url)
+.then(()=>alert('Odkaz zkopírován:\n'+url))
 .catch(()=>{
 
-const textArea =
-document.createElement('textarea');
+let t=document.createElement('textarea');
 
-textArea.value=downloadUrl;
+t.value=url;
 
-document.body.appendChild(textArea);
+document.body.appendChild(t);
 
-textArea.select();
+t.select();
 
 document.execCommand('copy');
 
-document.body.removeChild(textArea);
+document.body.removeChild(t);
 
-alert('Odkaz zkopírován:\\n'+downloadUrl);
+alert('Odkaz zkopírován:\n'+url);
 
 });
 
@@ -151,18 +129,13 @@ alert('Odkaz zkopírován:\\n'+downloadUrl);
 <h1>Seznam nahraných obrázků</h1>
 
 <p>
-
-<a href="admin.php">Zpět do Admin Panelu</a>
-
-|
-
+<a href="admin.php">Admin panel</a> |
 <a href="login.php">Odhlásit</a>
-
 </p>
 
 <?php if(empty($images)): ?>
 
-<p>Žádné obrázky nebyly nahrány.</p>
+<p>Žádné obrázky.</p>
 
 <?php else: ?>
 
@@ -172,42 +145,31 @@ alert('Odkaz zkopírován:\\n'+downloadUrl);
 
 <div class="image-container">
 
-<img
-src="<?php echo htmlspecialchars($uploadDir.$image); ?>"
-alt="<?php echo htmlspecialchars($image); ?>"
->
+<img src="<?=htmlspecialchars($uploadDir.$image)?>">
 
 <br>
 
-<small>
-<?php echo htmlspecialchars($image); ?>
-</small>
+<small><?=htmlspecialchars($image)?></small>
 
 <br>
 
-<a
-class="btn download"
-href="download.php?file=<?php echo urlencode($image); ?>"
->
+<a class="btn download"
+href="download.php?file=<?=urlencode($image)?>">
 Stáhnout
 </a>
 
 <br>
 
-<button
-class="btn link"
-onclick="generateLink('<?php echo htmlspecialchars($image); ?>')"
->
+<button class="btn link"
+onclick="generateLink('<?=htmlspecialchars($image)?>')">
 Generovat odkaz
 </button>
 
 <br>
 
-<a
-class="btn delete"
-href="?delete=<?php echo urlencode($image); ?>"
-onclick="return confirm('Opravdu chceš tento obrázek smazat?');"
->
+<a class="btn delete"
+href="?delete=<?=urlencode($image)?>"
+onclick="return confirm('Smazat obrázek?');">
 Smazat
 </a>
 
@@ -220,5 +182,4 @@ Smazat
 <?php endif; ?>
 
 </body>
-
 </html>

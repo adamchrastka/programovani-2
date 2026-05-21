@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js.js"></script>
+</head>
+<body>
+    <style>
+        .border {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            width: fit-content;
+        }
+    </style>
+    <h1>Kruh</h1>
+    <h2>Získávání hodnoty z formuláře</h2>
+    <p>Zadej poloměr kruhu:</p>
+    <form>
+        <input type="number" id="radius" placeholder="Poloměr">
+        <button type="button" onclick="calculateArea()">Výpočet</button>
+    </form>
+    <p>Obsah: </p>
+    <div class="border"><p id="result"></p></div>
+    </form>
+    <p>Obvod: </p>
+    <div class="border"><p id="circumference"></p></div>
+    <h1>Obdélník</h1>
+    <h2>Zadej stranu a</h2>
+    <form>
+        <input type="number" id="sideA" placeholder="Strana a">
+    </form>
+    <h2>Zadej stranu b</h2>
+    <form>
+        <input type="number" id="sideB" placeholder="Strana b">
+        <button type="button" onclick="calculateRectangle()">Výpočet</button>
+    </form>
+    <p>Obsah: </p>
+    <form>
+    <div class="border"></div><p id="rectangleArea"></p></div>
+    </form>
+    <p>Obvod: </p>
+    <form>
+    <div class="border"><p id="rectanglePerimeter"></p></div>
+    </form> 
+</body>
+</html>

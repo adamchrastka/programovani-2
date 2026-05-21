@@ -18,6 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <body>
+    <style>
+body {
+    background-color: black;
+    color: white;
+}
+</style>
     <h1>Prihlaseni</h1>
     <?php if (isset($success)) { ?>
         <p>Prihlaseni uspesne! Presmerovani za 3 sekundy...</p>

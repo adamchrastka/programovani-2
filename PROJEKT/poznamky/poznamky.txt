@@ -1,0 +1,14 @@
+Tady budu psát poznámky
+
+Pro přihlášení na administrátorskou / instruktorskou stránku 
+využijte prosím přihlašovací údaje: username: adam | password: admin, potom si můžete přidat vlastního administrátora
+
+Pro přihlášení na stránku pro uživatele / studenty můžete využít: username: uzivatel | password: user
+případně si přes administrátorskou stránku přidejte vlastního uživatele
+
+OSTATNÍ HESLA ZADANÁ MNOU (ADAM CHRASTKA) JSOU USERNAME UZIVATELE BEZ DIAKRITIKY A VŠECHO MALÝM PÍSMEM
+    př.: username: František | password: frantisek
+         username: Pepa | password: pepa
+
+
+ID studentů zůstává stejné i po vymazání studenta. Pokud by došlo ke změně, tak bude student zmatený a databáze taky

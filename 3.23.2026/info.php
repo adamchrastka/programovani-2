@@ -10,5 +10,11 @@
     <p>Tady najdete uzitecne informace o nasich sluzbach.</p>
     <p>Toto delal adamek chrastkay</p>
     <a href="login.php">Odhlasit</a>
+<style>
+body {
+    background-color: black;
+    color: white;
+}
+</style>
 </body>
 </html>

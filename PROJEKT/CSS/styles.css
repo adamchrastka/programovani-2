@@ -1,0 +1,240 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f7;
+    color: #222;
+    background-image: url("C:\\xampp\\htdocs\\programovani-2\\PROJEKT\\obrazek\\turbokara1.jpg");
+
+}
+/* LOGIN */ 
+.page-center {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.card {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 16px;
+    padding: 32px 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+.login-card h1 {
+    margin: 0 0 10px 0;
+    font-size: 32px;
+}
+.subtitle {
+    margin: 0 0 24px 0;
+    color: #666;
+    font-size: 16px;
+}
+/* FORMY */
+.form-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+.form-vertical input,
+.form-vertical select,
+.form-vertical button {
+    width: 100%;
+    max-width: 320px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+.form-vertical input,
+.form-vertical select {
+    border: 1px solid #cfcfcf;
+    background: #fafafa;
+    color: #222;
+}
+.form-vertical input:focus,
+.form-vertical select:focus,
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: #888;
+    background: #fff;
+}
+.form-vertical button,
+form button,
+button {
+    border: none;
+    background: #2f2f2f;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.form-vertical button:hover,
+form button:hover,
+button:hover {
+    background: #1f1f1f;
+}
+.admin-btn:hover {
+    background: #239233;
+}
+/* CHYBY */
+.error-message,
+.error {
+    color: #b00020;
+    margin-bottom: 16px;
+    font-size: 14px;
+    text-align: center;
+}
+.success {
+    color: #146c2e;
+    text-align: center;
+}
+/* HLAVNI CONTAINER */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+/* NADPISY */
+h1,
+h2 {
+    text-align: center;
+    margin-top: 0;
+}
+/* TABULKY */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+}
+table,
+th,
+td {
+    border: 1px solid #d9d9d9;
+}
+th,
+td {
+    padding: 12px;
+    text-align: center;
+}
+th {
+    background: #efefef;
+}
+tr:nth-child(even) {
+    background: #fafafa;
+}
+/* SPECIALNI TABULKA */
+#tabulka {
+    width: 80%;
+    max-width: 700px;
+    border-collapse: collapse;
+    margin: 30px auto;
+    background: white;
+}
+/* FORMY */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    margin: 20px 0;
+}
+form input,
+form select,
+form button {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+form input,
+form select {
+    border: 1px solid #cfcfcf;
+    background: #fafafa;
+}
+/* ODKAZY */
+a {
+    color: #222;
+    text-decoration: none;
+    margin: 0 6px;
+}
+a:hover {
+    text-decoration: underline;
+}
+/* TLACITKA */
+button {
+    padding: 12px 18px;
+    border-radius: 10px;
+}
+/* TLACITKA V RADKU */
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+.button-row button {
+    width: auto;
+    min-width: 140px;
+}
+/* Vertical button column variant */
+.button-row.button-column {
+    width: 100%;
+    max-width: 400px;
+}
+.button-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+.button-row.button-column button,
+.button-column button {
+    width: 100%;
+    min-width: 140px;
+}
+/* TEXT */
+p {
+    text-align: center;
+}
+/* STATISTIKY */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+.stat-box {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+.stat-box h2 {
+    margin: 0;
+    font-size: 42px;
+    color: #202225;
+}
+.stat-box p {
+    margin-top: 10px;
+    color: #666;
+    font-size: 16px;
+}
+.odhlasit-btn:hover {
+    background: #e74c3c;
+}
