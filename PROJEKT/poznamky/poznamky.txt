@@ -1,14 +1,76 @@
-Tady budu psát poznámky
+Dokumentace projektu - Autoskola system
+Autor: Adam Chrastka
 
-Pro přihlášení na administrátorskou / instruktorskou stránku 
-využijte prosím přihlašovací údaje: username: adam | password: admin, potom si můžete přidat vlastního administrátora
+Tady budu psát poznámky k projektu.
 
-Pro přihlášení na stránku pro uživatele / studenty můžete využít: username: uzivatel | password: user
+Webová aplikace napsaná v PHP, HTML a CSS
+Běží na XAMPP
+
+Spusteni
+
+1. Spustit XAMPP (Apache + MySQL)
+2. Zkopírovat složku projektu do C:/xampp/htdocs/
+3. Otevřít prohlížeč a jít na http://localhost:80 a doklepat se do požadované složky
+4. Databáze se vytvoří sama při prvním načtení - není potřeba nic importovat
+
+
+PRIHLASOVANI
+
+Pro přihlášení na administrátorskou / instruktorskou stránku
+využijte prosím přihlašovací údaje: username: adam | password: admin
+potom si můžete přidat vlastního administrátora
+
+Pro přihlášení na stránku pro uživatele / studenty
+můžete využít: username: uzivatel | password: user
 případně si přes administrátorskou stránku přidejte vlastního uživatele
 
-OSTATNÍ HESLA ZADANÁ MNOU (ADAM CHRASTKA) JSOU USERNAME UZIVATELE BEZ DIAKRITIKY A VŠECHO MALÝM PÍSMEM
+OSTATNÍ HESLA ZADANÁ MNOU (ADAM CHRASTKA) JSOU USERNAME UZIVATELE
+BEZ DIAKRITIKY A VŠECHNO MALÝM PÍSMEM
     př.: username: František | password: frantisek
          username: Pepa | password: pepa
+Hesla jsou v databázi zašifrovaná.
+DATABAZE
+
+Databáze se jmenuje "autoskola" a vytvoří se automaticky.
+
+Tabulky:
+- users       ... uživatelé systému (admini a uživatelé)
+- students    ... studenti autoškoly (jméno, příjmení, datum narození, tel, email, prospěl)
+- instructors ... instruktoři (jméno, příjmení, tel, email)
+- vozidla     ... vozový park (značka, model, SPZ, rok výroby, barva, palivo, převodovka)
+- jizdy       ... záznamy jízd (student, instruktor, vozidlo, datum, čas)
+
+ID studentů zůstává beze změn i po vymazání studenta.
+Pokud by došlo ke změně, tak bude student zmatený a databáze taky.
+
+Při smazání studenta, instruktora nebo vozidla se automaticky smažou
+i všechny jejich jízdy.
 
 
-ID studentů zůstává stejné i po vymazání studenta. Pokud by došlo ke změně, tak bude student zmatený a databáze taky
+ROLE A OPRAVNENI
+
+Všechny stránky jsou ověřené přes session a role pro jednotlivé uživatele,
+a tyto role určují, co uživatel uvidí. Zabezpečují, že se do systému nedostanete i pouze přes link.
+
+Uživatelé vidí pouze tabulky s vozidly, jízdami a instruktory.
+
+Administrátoři vidí tabulky s vozidly, jízdami atd. a u nich také
+možnost smazat či upravit danou část.
+
+
+PREHLED STRANEK
+
+
+index.php       přihlašovací stránka
+admin.php       hlavní stránka administrátora
+students.php    správa studentů (jen admin)
+uzivatele.php   správa uživatelů systému (jen admin)
+instructors.php správa instruktorů
+vozidla.php     správa vozidel
+jizdy.php       správa jízd
+db.php          připojení k databázi + automatické vytvoření tabulek
+
+POZNAMKY
+- Projekt je školní, hesla jsou jednoduchá záměrně
+- CSS styly jsou sdílené pro celý projekt (styles.css). Neviděl jsem důvod, dělat pro každou stránku zvlášť.
+- Projekt běží lokálně na XAMPPu, není nasazený na server.

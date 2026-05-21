@@ -244,7 +244,7 @@ $result = mysqli_query(
 <?php } ?>
 
 </table>
-
+<br>
 
 <?php if ($error != "") { ?>
     <p><?php echo htmlspecialchars($error); ?></p>
@@ -301,7 +301,7 @@ $result = mysqli_query(
 <?php } ?>
 
 <br>
-<button onclick="window.location.href='admin.php'">Zpět na admin</button>
+<button onclick="window.location.href='admin.php'">Zpět na hl. stránku</button>
 
 </div>
 

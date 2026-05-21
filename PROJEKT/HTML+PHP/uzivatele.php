@@ -17,6 +17,7 @@ $editUser = [
     "username" => "",
     "role" => ""
 ];
+
 // SMAZANI UZIVATELE
 if (isset($_GET["delete"])) {
     $id = (int)$_GET["delete"];
@@ -41,6 +42,7 @@ if (isset($_GET["delete"])) {
         $error = "Uzivatel nebyl nalezen.";
     }
 }
+
 // NACITANI UZIVATELE PRO UPRAVU
 if (isset($_GET["edit"])) {
     $id = (int)$_GET["edit"];
@@ -58,10 +60,12 @@ if (isset($_GET["edit"])) {
     }
     mysqli_stmt_close($stmt);
 }
+
 // PRIDANI / UPRAVA UZIVATELE
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST["username"]);
     $role = trim($_POST["role"]);
+
     // UPRAVA
     if (isset($_POST["update_user"])) {
         $id = (int)$_POST["id"];
@@ -91,6 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+
 // NACTENI UZIVATELU
 $sql = "SELECT id, username, role FROM users ORDER BY id ASC";
 $result = mysqli_query($conn, $sql);
@@ -107,22 +112,26 @@ $result = mysqli_query($conn, $sql);
 <div class="container">
     <h1>Správa uživatelů</h1>
     <p>
-        Vitejte,
+        Vítejte,
         <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong>.
     </p>
+
     <?php if ($error != "") { ?>
         <p class="error"><?php echo htmlspecialchars($error); ?></p>
     <?php } ?>
     <?php if ($success != "") { ?>
         <p class="success"><?php echo htmlspecialchars($success); ?></p>
     <?php } ?>
-    <table>
+
+    <table border="1" cellpadding="8">
         <tr>
             <th>ID</th>
             <th>Uživatel</th>
             <th>Role</th>
-            <th>Akce</th>
+            <th>Upravit</th>
+            <th>Smazat</th>
         </tr>
+
         <?php if ($result && mysqli_num_rows($result) > 0) { ?>
             <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                 <tr>
@@ -131,17 +140,26 @@ $result = mysqli_query($conn, $sql);
                     <td><?php echo htmlspecialchars($row["role"]); ?></td>
                     <td>
                         <a href="uzivatele.php?edit=<?php echo $row["id"]; ?>">Upravit</a>
-                        <a href="uzivatele.php?delete=<?php echo $row["id"]; ?>">Smazat</a>
+                    </td>
+                    <td>
+                        <a href="uzivatele.php?delete=<?php echo $row["id"]; ?>"
+                           onclick="return confirm('Opravdu chcete smazat tohoto uzivatele?');">Smazat</a>
                     </td>
                 </tr>
             <?php } ?>
         <?php } else { ?>
             <tr>
-                <td colspan="4">Zadni uzivatele nebyli nalezeni.</td>
+                <td colspan="5">Žádní uživatelé nebyli nalezeni.</td>
             </tr>
         <?php } ?>
     </table>
-    <h2><?php echo $editMode ? "Upravit uzivatele" : "Přidat uživatele"; ?></h2>
+    <br>
+
+    <?php if ($error != "") { ?>
+        <p class="error"><?php echo htmlspecialchars($error); ?></p>
+    <?php } ?>
+
+    <h2><?php echo $editMode ? "Upravit uživatele" : "Přidat uživatele"; ?></h2>
     <form method="post" action="">
         <?php if ($editMode) { ?>
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($editUser["id"]); ?>">
@@ -158,17 +176,19 @@ $result = mysqli_query($conn, $sql);
         <?php } ?>
         <select name="role" required>
             <option value="admin" <?php if ($editUser["role"] == "admin") echo "selected"; ?>>Admin</option>
-            <option value="user" <?php if ($editUser["role"] == "user") echo "selected"; ?>>User</option>
+            <option value="user"  <?php if ($editUser["role"] == "user")  echo "selected"; ?>>User</option>
         </select>
         <button type="submit" name="<?php echo $editMode ? "update_user" : "add_user"; ?>">
             <?php echo $editMode ? "Uložit změny" : "Přidat uživatele"; ?>
         </button>
         <?php if ($editMode) { ?>
-            <button type="button" onclick="window.location.href='uzivatele.php'">Zrušit úpravu</button>
+            <div class="button-row button-column">
+                <button type="button" class="button1" onclick="window.location.href='uzivatele.php'">Zrušit úpravu</button>
+            </div>
         <?php } ?>
     </form>
     <br>
-    <button type="button" onclick="window.location.href='admin.php'">Zpět na admin</button>
+    <button type="button" onclick="window.location.href='admin.php'">Zpět na hl. stránku</button>
 </div>
 </body>
 </html>

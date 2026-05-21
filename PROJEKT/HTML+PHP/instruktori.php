@@ -143,7 +143,7 @@ $result = mysqli_query($conn, $sql);
                 </tr>
             <?php } ?>
         </table>
-
+        <br>
         <?php if ($error != "") { ?>
             <p><?php echo $error; ?></p>
         <?php } ?>
@@ -160,15 +160,13 @@ $result = mysqli_query($conn, $sql);
                 <input type="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($editInstruktor["email"]); ?>">
                 <?php if ($editMode) { ?>
                     <button type="submit" name="update_instruktor">Uložit změny</button>
-                    <button type="submit"><a href="instruktori.php">Zrušit úpravu</a></button>
+                    <button type="button" onclick="window.location.href='instruktori.php'">Zrušit úpravu</button>
                 <?php } else { ?>
                     <button type="submit" name="add_instruktor">Přidat instruktora</button>
                 <?php } ?>
             </form>
         <?php } ?>
+        <button type="button" onclick="window.location.href='admin.php'">Zpět na hl. stránku</button>
     </div>
-
-    <br>
-    <button onclick="window.location.href='admin.php'">Zpět na admin</button>
 </body>
 </html>

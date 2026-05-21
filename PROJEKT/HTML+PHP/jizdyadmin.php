@@ -185,6 +185,40 @@ $jizdy = mysqli_query($conn, "
     <p><?php echo htmlspecialchars($error); ?></p>
 <?php } ?>
 
+<h2>Seznam jízd</h2>
+
+<table border="1" cellpadding="8">
+
+<tr>
+    <th>ID</th>
+    <th>Student</th>
+    <th>Instruktor</th>
+    <th>Vozidlo</th>
+    <th>Datum</th>
+    <th>Čas</th>
+    <?php if ($isAdmin) { ?>
+        <th>Upravit</th>
+        <th>Smazat</th>
+    <?php } ?>
+</tr>
+
+<?php while ($j = mysqli_fetch_assoc($jizdy)) { ?>
+<tr>
+    <td><?php echo $j["id"]; ?></td>
+    <td><?php echo $j["student_prijmeni"] . " " . $j["student_jmeno"]; ?></td>
+    <td><?php echo $j["instruktor_prijmeni"] . " " . $j["instruktor_jmeno"]; ?></td>
+    <td><?php echo $j["znacka"] . " " . $j["model"]; ?></td>
+    <td><?php echo $j["datum"]; ?></td>
+    <td><?php echo substr($j["cas"], 0, 5); ?></td>
+
+    <?php if ($isAdmin) { ?>
+        <td><a href="?edit=<?php echo $j["id"]; ?>">Upravit</a></td>
+        <td><a href="?delete=<?php echo $j["id"]; ?>" onclick="return confirm('Smazat?');">Smazat</a></td>
+    <?php } ?>
+</tr>
+<?php } ?>
+</table>
+<br>
 <?php if ($isAdmin) { ?>
 
 <h2><?php echo $editMode ? "Upravit jizdu" : "Přidat jízdu"; ?></h2>
@@ -241,45 +275,8 @@ $jizdy = mysqli_query($conn, "
 
 <?php } ?>
 
-
-
-<h2>Seznam jízd</h2>
-
-<table border="1" cellpadding="8">
-
-<tr>
-    <th>ID</th>
-    <th>Student</th>
-    <th>Instruktor</th>
-    <th>Vozidlo</th>
-    <th>Datum</th>
-    <th>Čas</th>
-    <?php if ($isAdmin) { ?>
-        <th>Upravit</th>
-        <th>Smazat</th>
-    <?php } ?>
-</tr>
-
-<?php while ($j = mysqli_fetch_assoc($jizdy)) { ?>
-<tr>
-    <td><?php echo $j["id"]; ?></td>
-    <td><?php echo $j["student_prijmeni"] . " " . $j["student_jmeno"]; ?></td>
-    <td><?php echo $j["instruktor_prijmeni"] . " " . $j["instruktor_jmeno"]; ?></td>
-    <td><?php echo $j["znacka"] . " " . $j["model"]; ?></td>
-    <td><?php echo $j["datum"]; ?></td>
-    <td><?php echo substr($j["cas"], 0, 5); ?></td>
-
-    <?php if ($isAdmin) { ?>
-        <td><a href="?edit=<?php echo $j["id"]; ?>">Upravit</a></td>
-        <td><a href="?delete=<?php echo $j["id"]; ?>" onclick="return confirm('Smazat?');">Smazat</a></td>
-    <?php } ?>
-</tr>
-<?php } ?>
-
-</table>
-
 <br>
-<button onclick="window.location.href='admin.php'">Zpět na admin</button>
+<button onclick="window.location.href='admin.php'">Zpět na hl. stránku</button>
 
 </div>
 
