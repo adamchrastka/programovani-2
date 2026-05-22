@@ -17,7 +17,6 @@ $editStudent = [
     "prospel" => 0
 ];
 
-// SMAZANI STUDENTA
 if (isset($_GET["delete"])) {
     $id = (int)$_GET["delete"];
     $stmt = mysqli_prepare($conn, "DELETE FROM students WHERE id = ?");
@@ -28,7 +27,6 @@ if (isset($_GET["delete"])) {
     exit();
 }
 
-// PRIDANI NOVEHO STUDENTA
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add_student"])) {
     $jmeno    = trim($_POST["jmeno"]);
     $prijmeni = trim($_POST["prijmeni"]);
@@ -49,7 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add_student"])) {
     }
 }
 
-// UPRAVA STUDENTA
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update_student"])) {
     $id       = (int)$_POST["id"];
     $jmeno    = trim($_POST["jmeno"]);
@@ -71,7 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update_student"])) {
     }
 }
 
-// NACITANI STUDENTA PRO UPRAVU
 if (isset($_GET["edit"])) {
     $id = (int)$_GET["edit"];
     $stmt = mysqli_prepare($conn, "SELECT id, jmeno, prijmeni, birthdate, tel, email, prospel FROM students WHERE id = ?");
@@ -94,7 +90,6 @@ if (isset($_GET["edit"])) {
     mysqli_stmt_close($stmt);
 }
 
-// NACTENI STUDENTU
 $sql = "SELECT id, jmeno, prijmeni, birthdate, tel, email, prospel FROM students ORDER BY id ASC";
 $result = mysqli_query($conn, $sql);
 ?>

@@ -7,7 +7,6 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
     exit();
 }
 
-// Statistiky
 $studentsCount = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM students"))["total"];
 
 $instructorsCount = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM instructors"))["total"];

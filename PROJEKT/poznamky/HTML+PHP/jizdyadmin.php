@@ -21,8 +21,6 @@ $editRide = [
     "cas" => ""
 ];
 
-
-// DELETE (jen admin)
 if (isset($_GET["delete"]) && $isAdmin) {
 
     $id = (int)$_GET["delete"];
@@ -37,7 +35,6 @@ if (isset($_GET["delete"]) && $isAdmin) {
 }
 
 
-// EDIT LOAD
 if (isset($_GET["edit"]) && $isAdmin) {
 
     $id = (int)$_GET["edit"];
@@ -79,7 +76,6 @@ if (isset($_GET["edit"]) && $isAdmin) {
 }
 
 
-// INSERT + UPDATE (jen admin)
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAdmin) {
 
     $student_id = (int)$_POST["student_id"];
@@ -141,13 +137,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAdmin) {
 }
 
 
-// DATA PRO FORMULAR
 $students = mysqli_query($conn, "SELECT id, jmeno, prijmeni FROM students");
 $instructors = mysqli_query($conn, "SELECT id, jmeno, prijmeni FROM instructors");
 $vozidla = mysqli_query($conn, "SELECT id, znacka, model, spz FROM vozidla");
 
 
-// LIST JIZD
 $jizdy = mysqli_query($conn, "
     SELECT
         j.id,

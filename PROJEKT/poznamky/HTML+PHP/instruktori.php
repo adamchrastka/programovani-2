@@ -17,7 +17,6 @@ $editInstruktor = [
     "email" => ""
 ];
 
-// SMAZANI INSTRUKTORA
 if (isset($_GET["delete"] ) && $isAdmin) {
     $id = (int)$_GET["delete"];
 
@@ -30,7 +29,6 @@ if (isset($_GET["delete"] ) && $isAdmin) {
     exit();
 }
 
-// PRIDANI NOVEHO INSTRUKTORA
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add_instruktor"] ) && $isAdmin) {
     $jmeno = trim($_POST["jmeno"]);
     $prijmeni = trim($_POST["prijmeni"]);
@@ -50,7 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add_instruktor"] ) && 
     }
 }
 
-// UPRAVA INSTRUKTORA
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update_instruktor"] ) && $isAdmin) {
     $id = (int)$_POST["id"];
     $jmeno = trim($_POST["jmeno"]);
@@ -71,7 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update_instruktor"] ) 
     }
 }
 
-// NACITANI INSTRUKTORA PRO UPRAVU
 if (isset($_GET["edit"])) {
     $id = (int)$_GET["edit"];
 
@@ -95,7 +91,6 @@ if (isset($_GET["edit"])) {
     mysqli_stmt_close($stmt);
 }
 
-// NACTENI INSTRUKTORU
 $sql = "SELECT id, jmeno, prijmeni, tel, email FROM instructors ORDER BY id ASC";
 $result = mysqli_query($conn, $sql);
 ?>

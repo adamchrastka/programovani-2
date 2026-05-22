@@ -4,17 +4,14 @@ $username = "root";
 $password = "";
 $dbname = "autoskola";
 
-// Připojení bez databáze
 $conn = mysqli_connect($servername, $username, $password);
 if (!$conn) {
     die("Připojení selhalo: " . mysqli_connect_error());
 }
 
-// Vytvoření databáze
 mysqli_query($conn, "CREATE DATABASE IF NOT EXISTS `$dbname` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
 mysqli_select_db($conn, $dbname);
 
-// Tabulka users
 mysqli_query($conn, "
     CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -24,7 +21,6 @@ mysqli_query($conn, "
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 ");
 
-// Tabulka students
 mysqli_query($conn, "
     CREATE TABLE IF NOT EXISTS students (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -37,7 +33,6 @@ mysqli_query($conn, "
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 ");
 
-// Tabulka instructors
 mysqli_query($conn, "
     CREATE TABLE IF NOT EXISTS instructors (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -48,7 +43,6 @@ mysqli_query($conn, "
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 ");
 
-// Tabulka vozidla
 mysqli_query($conn, "
     CREATE TABLE IF NOT EXISTS vozidla (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -62,7 +56,6 @@ mysqli_query($conn, "
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 ");
 
-// Tabulka jizdy
 mysqli_query($conn, "
     CREATE TABLE IF NOT EXISTS jizdy (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -77,14 +70,12 @@ mysqli_query($conn, "
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 ");
 
-// Výchozí admin účet
 $check = mysqli_query($conn, "SELECT id FROM users WHERE username = 'adam'");
 if (mysqli_num_rows($check) === 0) {
     $hash = password_hash("admin", PASSWORD_DEFAULT);
     mysqli_query($conn, "INSERT INTO users (username, password, role) VALUES ('adam', '$hash', 'admin')");
 }
 
-// Výchozí user účet
 $check = mysqli_query($conn, "SELECT id FROM users WHERE username = 'uzivatel'");
 if (mysqli_num_rows($check) === 0) {
     $hash = password_hash("user", PASSWORD_DEFAULT);

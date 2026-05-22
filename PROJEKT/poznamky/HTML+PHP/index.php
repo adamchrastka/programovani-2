@@ -8,7 +8,6 @@ if (isset($_GET['logout'])) {
     exit();
 }
 
-// kdyz je uz uzivatel prihlaseny
 if (isset($_SESSION['username'])) {
     if ($_SESSION['role'] == 'admin') {
         header("Location: admin.php");
@@ -20,7 +19,6 @@ if (isset($_SESSION['username'])) {
 
 $error = "";
 
-// prihlaseni
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'db.php';
 

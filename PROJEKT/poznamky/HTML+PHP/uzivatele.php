@@ -18,7 +18,6 @@ $editUser = [
     "role" => ""
 ];
 
-// SMAZANI UZIVATELE
 if (isset($_GET["delete"])) {
     $id = (int)$_GET["delete"];
     $stmt = mysqli_prepare($conn, "SELECT username FROM users WHERE id = ?");
@@ -43,7 +42,6 @@ if (isset($_GET["delete"])) {
     }
 }
 
-// NACITANI UZIVATELE PRO UPRAVU
 if (isset($_GET["edit"])) {
     $id = (int)$_GET["edit"];
     $stmt = mysqli_prepare($conn, "SELECT id, username, role FROM users WHERE id = ?");
@@ -61,12 +59,10 @@ if (isset($_GET["edit"])) {
     mysqli_stmt_close($stmt);
 }
 
-// PRIDANI / UPRAVA UZIVATELE
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST["username"]);
     $role = trim($_POST["role"]);
 
-    // UPRAVA
     if (isset($_POST["update_user"])) {
         $id = (int)$_POST["id"];
         if ($username != "" && $role != "") {
@@ -79,7 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $error = "Vypln vsechna pole.";
         }
-    // PRIDANI
     } else {
         $password = isset($_POST["password"]) ? trim($_POST["password"]) : "";
         if ($username != "" && $password != "" && $role != "") {
@@ -96,7 +91,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// NACTENI UZIVATELU
 $sql = "SELECT id, username, role FROM users ORDER BY id ASC";
 $result = mysqli_query($conn, $sql);
 ?>

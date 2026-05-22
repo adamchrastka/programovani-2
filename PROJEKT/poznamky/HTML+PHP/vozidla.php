@@ -23,8 +23,6 @@ $editVozidlo = [
     "prevodovka" => ""
 ];
 
-
-// SMAZANI VOZIDLA
 if (isset($_GET["delete"]) && $isAdmin) {
 
     $id = (int)$_GET["delete"];
@@ -39,7 +37,7 @@ if (isset($_GET["delete"]) && $isAdmin) {
 }
 
 
-// EDIT LOAD
+
 if (isset($_GET["edit"]) && $isAdmin) {
 
     $id = (int)$_GET["edit"];
@@ -85,7 +83,6 @@ if (isset($_GET["edit"]) && $isAdmin) {
 }
 
 
-// INSERT / UPDATE
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAdmin) {
 
     $znacka = trim($_POST["znacka"]);
@@ -106,7 +103,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAdmin) {
         $prevodovka != ""
     ) {
 
-        // UPDATE
         if (isset($_POST["update_vozidlo"])) {
 
             $id = (int)$_POST["id"];
@@ -131,7 +127,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAdmin) {
                 $id
             );
 
-        // INSERT
         } else {
 
             $stmt = mysqli_prepare(
@@ -166,7 +161,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAdmin) {
 }
 
 
-// DATA
 $result = mysqli_query(
     $conn,
     "SELECT id, znacka, model, spz, rok_vyroby, barva, palivo, prevodovka
